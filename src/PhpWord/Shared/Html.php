@@ -329,6 +329,11 @@ class Html
                 if ($cNode->nodeName == '#text') {
                     $text = $cNode->nodeValue;
                 }
+
+                //ideally we should be parsing child nodes for any style, for now just take the text
+                if ('' == trim($text) && '' != trim($node->textContent)) {
+                    $text = trim($node->textContent);
+                }
             }
             $element->addListItem($text, $data['listdepth'], $styles['font'], $styles['list'], $styles['paragraph']);
         }
